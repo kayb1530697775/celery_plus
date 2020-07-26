@@ -1,0 +1,18 @@
+# 启动命令
+celery worker -A main_celery -l info
+# 启动命令 指定worker 数为10个
+celery worker -A main_celery -l info --concurrency=10
+
+# 列取集群中活动的节点
+celery -A main_celery status
+# 列出所有活动的任务
+celery -A main_celery inspect active
+# 列出所有被调度eta的任务
+celery -A main_celery inspect scheduled
+# 列出所有被注册的任务
+celery -A main_celery inspect registered
+# 列出所有被revoked 的任务
+celery -A main_celery inspect revoked
+
+
+# 可以用户flower 对celery 任务进行实时监控
