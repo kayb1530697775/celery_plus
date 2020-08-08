@@ -5,12 +5,18 @@
 
 from datetime import datetime, timedelta
 
-from asyn_module.tasks import add
+from asyn_module.tasks import *
 
 
 if __name__ == '__main__':
     # 调用方式一  使用delay
-    # results = add.delay(1, 2)
+    results = add.delay(1, 2)
+    print(results)
+
+    # results = add.s(2,2)()  # 直接在当前进程调用
+    # print(results)
+
+    # results = print_time.delay(a=1, b=2)
     # print(results)
 
     # 调用方式二  使用apply_async   等同于上面方式一
@@ -32,8 +38,8 @@ if __name__ == '__main__':
     # print(results)
 
     # 调用方式五 10秒钟后开始执行任务 5秒钟后过期 为了测试 这样调整时间  一般使用到的场景为 比如一定时间后开始执行任务 但是由于任务过多 并没有开始执行 但是过了一定时间就没有必要执行该任务了。
-    result = add.apply_async((4, 11), countdown=10, expires=5)
-    print(result)
+    # result = add.apply_async((4, 11), countdown=10, expires=5)
+    # print(result)
 
     # 调用方式六 目的同调用方式五 参数 expires 为 datetime类型
     # 注意expires 也有时区的问题  如果遇到指定时间过期 则使用同<调用方式四>相同的解决办法

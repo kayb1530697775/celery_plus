@@ -16,3 +16,5 @@ celery -A main_celery inspect revoked
 
 
 # 可以用户flower 对celery 任务进行实时监控
+
+# 中文文档　https://www.celerycn.io/　　也可以到官网查看
